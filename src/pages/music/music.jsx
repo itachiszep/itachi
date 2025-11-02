@@ -20,9 +20,9 @@ export default function Home() {
             >
               <iframe 
                 className="w-full h-full"
-                src={`https://www.youtube.com/embed/${videoId}`}
+                src={`https://www.youtube.com/embed/${videoId}?controls=1&modestbranding=0`}
                 title={`YouTube video ${index + 1}`}
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; fullscreen"
                 allowFullScreen
               ></iframe>
             </div>
