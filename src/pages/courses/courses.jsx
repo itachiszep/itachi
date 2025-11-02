@@ -2,8 +2,8 @@ import React from 'react'
 
 const dziendobrykali = () => {
   return (
- <div>
-      <div className='center'>
+ <div className="bg-black text-white box-border m-0 p-0">
+      <div className="min-h-screen bg-black flex flex-col items-center justify-center gap-5 px-5 py-10 text-center">
         <img className="itachi" src="/images/itachi-uchiha-naruto-amoled-black-background-minimal-art-3840x2160-6478.jpg"/>
         <iframe width="853" height="480" src="https://www.youtube.com/embed/lfmg-EJ8gm4?si=FBK2HJHwIlmX2dE4"></iframe>    
         <iframe width="853" height="480" src="https://www.youtube.com/embed/CgkZ7MvWUAA?si=M44-94LmDgoV-jlf"></iframe>    
