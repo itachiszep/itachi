@@ -1,3 +1,5 @@
+'use client';
+
 import React, { useState, useEffect } from 'react';
 import { Trash2, Plus, ArrowLeft } from 'lucide-react';
 
@@ -78,18 +80,18 @@ export default function Blog() {
   // Strona główna
   if (view === 'home') {
     return (
-      <div className="min-h-screen bg-black from-slate-900 via-slate-800 to-slate-900">
-        <div className="max-w-6xl mx-auto px-4 py-12">
+      <div className="min-h-screen bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 pt-20 md:pt-24">
+        <div className="w-full max-w-7xl mx-auto px-3 sm:px-4 md:px-6 lg:px-8 py-6 sm:py-8 md:py-12">
           {/* Header */}
-          <div className="flex justify-between items-center mb-12">
-            <h1 className="text-4xl font-bold text-white">Blog</h1>
+          <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 sm:gap-6 mb-8 sm:mb-12">
+            <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-white">Blog</h1>
             <button
               onClick={() => {
                 setFormData({ title: '', description: '', image: null, imagePreview: null });
                 setSelectedPost(null);
                 setView('create');
               }}
-              className="flex items-center gap-2 bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-lg font-semibold transition"
+              className="w-full sm:w-auto flex items-center justify-center gap-2 bg-blue-600 hover:bg-blue-700 text-white px-4 sm:px-6 py-2.5 sm:py-3 rounded-lg font-semibold transition active:scale-95"
             >
               <Plus size={20} /> Nowy post
             </button>
@@ -97,11 +99,11 @@ export default function Blog() {
 
           {/* Lista postów */}
           {posts.length === 0 ? (
-            <div className="text-center py-20">
-              <p className="text-gray-400 text-xl">Brak postów. Stwórz swój pierwszy post!</p>
+            <div className="text-center py-16 sm:py-20">
+              <p className="text-gray-400 text-lg sm:text-xl">Brak postów. Stwórz swój pierwszy post!</p>
             </div>
           ) : (
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-3 sm:gap-4 md:gap-6">
               {posts.map(post => (
                 <div
                   key={post.id}
@@ -109,14 +111,14 @@ export default function Blog() {
                     setSelectedPost(post);
                     setView('details');
                   }}
-                  className="bg-slate-800 rounded-lg overflow-hidden hover:transform hover:scale-105 transition cursor-pointer shadow-lg"
+                  className="bg-slate-800 rounded-lg overflow-hidden hover:transform hover:scale-105 transition cursor-pointer shadow-lg active:scale-95"
                 >
-                  <div className="h-48 overflow-hidden bg-slate-700">
+                  <div className="h-40 sm:h-48 overflow-hidden bg-slate-700">
                     <img src={post.image} alt={post.title} className="w-full h-full object-cover" />
                   </div>
-                  <div className="p-4">
-                    <h2 className="text-xl font-bold text-white mb-2 line-clamp-2">{post.title}</h2>
-                    <p className="text-gray-300 text-sm line-clamp-3">{post.description}</p>
+                  <div className="p-3 sm:p-4">
+                    <h2 className="text-lg sm:text-xl font-bold text-white mb-2 line-clamp-2">{post.title}</h2>
+                    <p className="text-gray-300 text-xs sm:text-sm line-clamp-3">{post.description}</p>
                   </div>
                 </div>
               ))}
@@ -130,71 +132,71 @@ export default function Blog() {
   // Strona tworzenia postu
   if (view === 'create') {
     return (
-      <div className="min-h-screen bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900">
-        <div className="max-w-2xl mx-auto px-4 py-12">
+      <div className="min-h-screen bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 pt-20 md:pt-24">
+        <div className="w-full max-w-2xl mx-auto px-3 sm:px-4 md:px-6 py-6 sm:py-8 md:py-12">
           <button
             onClick={() => setView('home')}
-            className="flex items-center gap-2 text-blue-400 hover:text-blue-300 mb-8 transition"
+            className="flex items-center gap-2 text-blue-400 hover:text-blue-300 mb-6 sm:mb-8 transition text-sm sm:text-base"
           >
             <ArrowLeft size={20} /> Wróć
           </button>
 
-          <div className="bg-slate-800 rounded-lg p-8 shadow-xl">
-            <h1 className="text-3xl font-bold text-white mb-6">Nowy post</h1>
+          <div className="bg-slate-800 rounded-lg p-4 sm:p-6 md:p-8 shadow-xl">
+            <h1 className="text-2xl sm:text-3xl font-bold text-white mb-4 sm:mb-6">Nowy post</h1>
 
             {/* Podgląd zdjęcia */}
             {formData.imagePreview && (
-              <div className="mb-6">
-                <img src={formData.imagePreview} alt="Preview" className="w-full h-64 object-cover rounded-lg" />
+              <div className="mb-4 sm:mb-6">
+                <img src={formData.imagePreview} alt="Preview" className="w-full h-40 sm:h-56 md:h-64 object-cover rounded-lg" />
               </div>
             )}
 
             {/* Input zdjęcia */}
-            <div className="mb-6">
-              <label className="block text-white font-semibold mb-3">Zdjęcie</label>
+            <div className="mb-4 sm:mb-6">
+              <label className="block text-white font-semibold mb-2 sm:mb-3 text-sm sm:text-base">Zdjęcie</label>
               <input
                 type="file"
                 accept="image/*"
                 onChange={handleImageChange}
-                className="w-full px-4 py-3 bg-slate-700 text-white rounded-lg border border-slate-600 focus:border-blue-500 focus:outline-none transition"
+                className="w-full px-3 sm:px-4 py-2.5 sm:py-3 bg-slate-700 text-white text-sm rounded-lg border border-slate-600 focus:border-blue-500 focus:outline-none transition"
               />
             </div>
 
             {/* Input tytułu */}
-            <div className="mb-6">
-              <label className="block text-white font-semibold mb-3">Tytuł</label>
+            <div className="mb-4 sm:mb-6">
+              <label className="block text-white font-semibold mb-2 sm:mb-3 text-sm sm:text-base">Tytuł</label>
               <input
                 type="text"
                 value={formData.title}
                 onChange={(e) => setFormData({ ...formData, title: e.target.value })}
                 placeholder="Wpisz tytuł postu..."
-                className="w-full px-4 py-3 bg-slate-700 text-white rounded-lg border border-slate-600 focus:border-blue-500 focus:outline-none transition"
+                className="w-full px-3 sm:px-4 py-2.5 sm:py-3 bg-slate-700 text-white text-sm rounded-lg border border-slate-600 focus:border-blue-500 focus:outline-none transition"
               />
             </div>
 
             {/* Input opisu */}
-            <div className="mb-8">
-              <label className="block text-white font-semibold mb-3">Opis</label>
+            <div className="mb-6 sm:mb-8">
+              <label className="block text-white font-semibold mb-2 sm:mb-3 text-sm sm:text-base">Opis</label>
               <textarea
                 value={formData.description}
                 onChange={(e) => setFormData({ ...formData, description: e.target.value })}
                 placeholder="Wpisz opis postu..."
                 rows="6"
-                className="w-full px-4 py-3 bg-slate-700 text-white rounded-lg border border-slate-600 focus:border-blue-500 focus:outline-none transition resize-none"
+                className="w-full px-3 sm:px-4 py-2.5 sm:py-3 bg-slate-700 text-white text-sm rounded-lg border border-slate-600 focus:border-blue-500 focus:outline-none transition resize-none"
               />
             </div>
 
             {/* Przyciski */}
-            <div className="flex gap-4">
+            <div className="flex flex-col sm:flex-row gap-3 sm:gap-4">
               <button
                 onClick={handleAddPost}
-                className="flex-1 bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-lg font-semibold transition"
+                className="flex-1 bg-blue-600 hover:bg-blue-700 text-white px-4 sm:px-6 py-2.5 sm:py-3 rounded-lg font-semibold transition active:scale-95 text-sm sm:text-base"
               >
                 Opublikuj
               </button>
               <button
                 onClick={() => setView('home')}
-                className="flex-1 bg-slate-700 hover:bg-slate-600 text-white px-6 py-3 rounded-lg font-semibold transition"
+                className="flex-1 bg-slate-700 hover:bg-slate-600 text-white px-4 sm:px-6 py-2.5 sm:py-3 rounded-lg font-semibold transition active:scale-95 text-sm sm:text-base"
               >
                 Anuluj
               </button>
@@ -208,35 +210,35 @@ export default function Blog() {
   // Strona szczegółów postu
   if (view === 'details' && selectedPost) {
     return (
-      <div className="min-h-screen bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900">
-        <div className="max-w-3xl mx-auto px-4 py-12">
+      <div className="min-h-screen bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 pt-20 md:pt-24">
+        <div className="w-full max-w-3xl mx-auto px-3 sm:px-4 md:px-6 py-6 sm:py-8 md:py-12">
           <button
             onClick={() => setView('home')}
-            className="flex items-center gap-2 text-blue-400 hover:text-blue-300 mb-8 transition"
+            className="flex items-center gap-2 text-blue-400 hover:text-blue-300 mb-6 sm:mb-8 transition text-sm sm:text-base"
           >
             <ArrowLeft size={20} /> Wróć
           </button>
 
           <div className="bg-slate-800 rounded-lg overflow-hidden shadow-xl">
-            <div className="h-96 overflow-hidden">
+            <div className="h-48 sm:h-72 md:h-96 overflow-hidden">
               <img src={selectedPost.image} alt={selectedPost.title} className="w-full h-full object-cover" />
             </div>
 
-            <div className="p-8">
-              <h1 className="text-4xl font-bold text-white mb-6">{selectedPost.title}</h1>
-              <p className="text-gray-300 text-lg leading-relaxed mb-8 whitespace-pre-wrap">{selectedPost.description}</p>
+            <div className="p-4 sm:p-6 md:p-8">
+              <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white mb-4 sm:mb-6">{selectedPost.title}</h1>
+              <p className="text-gray-300 text-sm sm:text-base md:text-lg leading-relaxed mb-6 sm:mb-8 whitespace-pre-wrap">{selectedPost.description}</p>
 
               {/* Przyciski akcji */}
-              <div className="flex gap-4">
+              <div className="flex flex-col sm:flex-row gap-3 sm:gap-4">
                 <button
                   onClick={() => handleEditPost(selectedPost)}
-                  className="flex-1 bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-lg font-semibold transition"
+                  className="flex-1 bg-blue-600 hover:bg-blue-700 text-white px-4 sm:px-6 py-2.5 sm:py-3 rounded-lg font-semibold transition active:scale-95 text-sm sm:text-base"
                 >
                   Edytuj
                 </button>
                 <button
                   onClick={() => handleDeletePost(selectedPost.id)}
-                  className="flex-1 bg-red-600 hover:bg-red-700 text-white px-6 py-3 rounded-lg font-semibold flex items-center justify-center gap-2 transition"
+                  className="flex-1 bg-red-600 hover:bg-red-700 text-white px-4 sm:px-6 py-2.5 sm:py-3 rounded-lg font-semibold flex items-center justify-center gap-2 transition active:scale-95 text-sm sm:text-base"
                 >
                   <Trash2 size={20} /> Usuń
                 </button>
@@ -251,69 +253,69 @@ export default function Blog() {
   // Strona edycji postu
   if (view === 'edit' && selectedPost) {
     return (
-      <div className="min-h-screen bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900">
-        <div className="max-w-2xl mx-auto px-4 py-12">
+      <div className="min-h-screen bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 pt-20 md:pt-24">
+        <div className="w-full max-w-2xl mx-auto px-3 sm:px-4 md:px-6 py-6 sm:py-8 md:py-12">
           <button
             onClick={() => setView('details')}
-            className="flex items-center gap-2 text-blue-400 hover:text-blue-300 mb-8 transition"
+            className="flex items-center gap-2 text-blue-400 hover:text-blue-300 mb-6 sm:mb-8 transition text-sm sm:text-base"
           >
             <ArrowLeft size={20} /> Wróć
           </button>
 
-          <div className="bg-slate-800 rounded-lg p-8 shadow-xl">
-            <h1 className="text-3xl font-bold text-white mb-6">Edytuj post</h1>
+          <div className="bg-slate-800 rounded-lg p-4 sm:p-6 md:p-8 shadow-xl">
+            <h1 className="text-2xl sm:text-3xl font-bold text-white mb-4 sm:mb-6">Edytuj post</h1>
 
             {/* Podgląd zdjęcia */}
             {formData.imagePreview && (
-              <div className="mb-6">
-                <img src={formData.imagePreview} alt="Preview" className="w-full h-64 object-cover rounded-lg" />
+              <div className="mb-4 sm:mb-6">
+                <img src={formData.imagePreview} alt="Preview" className="w-full h-40 sm:h-56 md:h-64 object-cover rounded-lg" />
               </div>
             )}
 
             {/* Input zdjęcia */}
-            <div className="mb-6">
-              <label className="block text-white font-semibold mb-3">Zmień zdjęcie</label>
+            <div className="mb-4 sm:mb-6">
+              <label className="block text-white font-semibold mb-2 sm:mb-3 text-sm sm:text-base">Zmień zdjęcie</label>
               <input
                 type="file"
                 accept="image/*"
                 onChange={handleImageChange}
-                className="w-full px-4 py-3 bg-slate-700 text-white rounded-lg border border-slate-600 focus:border-blue-500 focus:outline-none transition"
+                className="w-full px-3 sm:px-4 py-2.5 sm:py-3 bg-slate-700 text-white text-sm rounded-lg border border-slate-600 focus:border-blue-500 focus:outline-none transition"
               />
             </div>
 
             {/* Input tytułu */}
-            <div className="mb-6">
-              <label className="block text-white font-semibold mb-3">Tytuł</label>
+            <div className="mb-4 sm:mb-6">
+              <label className="block text-white font-semibold mb-2 sm:mb-3 text-sm sm:text-base">Tytuł</label>
               <input
                 type="text"
                 value={formData.title}
                 onChange={(e) => setFormData({ ...formData, title: e.target.value })}
-                className="w-full px-4 py-3 bg-slate-700 text-white rounded-lg border border-slate-600 focus:border-blue-500 focus:outline-none transition"
+                className="w-full px-3 sm:px-4 py-2.5 sm:py-3 bg-slate-700 text-white text-sm rounded-lg border border-slate-600 focus:border-blue-500 focus:outline-none transition"
               />
             </div>
 
             {/* Input opisu */}
-            <div className="mb-8">
-              <label className="block text-white font-semibold mb-3">Opis</label>
+            <div className="mb-6 sm:mb-8">
+              <label className="block text-white font-semibold mb-2 sm:mb-3 text-sm sm:text-base">Opis</label>
               <textarea
                 value={formData.description}
                 onChange={(e) => setFormData({ ...formData, description: e.target.value })}
                 rows="6"
-                className="w-full px-4 py-3 bg-slate-700 text-white rounded-lg border border-slate-600 focus:border-blue-500 focus:outline-none transition resize-none"
+                className="w-full px-3 sm:px-4 py-2.5 sm:py-3 bg-slate-700 text-white text-sm rounded-lg border border-slate-600 focus:border-blue-500 focus:outline-none transition resize-none"
               />
             </div>
 
             {/* Przyciski */}
-            <div className="flex gap-4">
+            <div className="flex flex-col sm:flex-row gap-3 sm:gap-4">
               <button
                 onClick={handleUpdatePost}
-                className="flex-1 bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-lg font-semibold transition"
+                className="flex-1 bg-blue-600 hover:bg-blue-700 text-white px-4 sm:px-6 py-2.5 sm:py-3 rounded-lg font-semibold transition active:scale-95 text-sm sm:text-base"
               >
                 Zapisz zmiany
               </button>
               <button
                 onClick={() => setView('details')}
-                className="flex-1 bg-slate-700 hover:bg-slate-600 text-white px-6 py-3 rounded-lg font-semibold transition"
+                className="flex-1 bg-slate-700 hover:bg-slate-600 text-white px-4 sm:px-6 py-2.5 sm:py-3 rounded-lg font-semibold transition active:scale-95 text-sm sm:text-base"
               >
                 Anuluj
               </button>
