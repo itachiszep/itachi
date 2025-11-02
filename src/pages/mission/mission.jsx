@@ -5,20 +5,13 @@ export default function Home() {
   const videos = [
     "CGyEd0aKWZE?si=O3s69_Vd5LjzD2Tj",
     "BS46C2z5lVE?si=TFgIGA3HhPXOOJHm",
-    "6N2dLghOMro",
-    "ZtLlfdyDySY?si=UbKso_sBtruvWFdc",
-    "fvFuGq-1Z8M?si=BFj93uChLamF5w78",
-    "3leVBrkTPuw",
-    "y4-in1XbVEc",
-    "7RUylQDHQMk",
-    "A-NQaCzzk4o",
-    "q0xc49VGrGc",
-    "EIRLTsjrDQI"
+    "CGyEd0aKWZE?si=O3s69_Vd5LjzD2Tj",
+    "BS46C2z5lVE?si=TFgIGA3HhPXOOJHm",
   ];
 
   return (
     <div className="bg-black text-white box-border m-0 p-0">
-      <div className="min-h-screen bg-black flex flex-col items-center justify-center gap-3 sm:gap-4 md:gap-5 lg:gap-6 px-3 sm:px-4 md:px-6 lg:px-8 py-6 sm:py-8 md:py-10 lg:py-12 text-center">
+      <div className="w-full bg-black flex flex-col items-center gap-3 sm:gap-4 md:gap-5 lg:gap-6 px-3 sm:px-4 md:px-6 lg:px-8 py-6 sm:py-8 md:py-10 lg:py-12 pt-20 md:pt-24 text-center">
         
         {/* Obraz */}
         <img 
@@ -27,8 +20,8 @@ export default function Home() {
           alt="Itachi Uchiha"
         />
         
-        {/* Grid iframeów */}
-        <div className="w-full grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-3 sm:gap-4 md:gap-5 lg:gap-6 max-w-xs sm:max-w-2xl md:max-w-4xl lg:max-w-6xl">
+        {/* Iframy jedno pod drugim */}
+        <div className="w-full flex flex-col items-center gap-3 sm:gap-4 md:gap-5 lg:gap-6 max-w-xs sm:max-w-sm md:max-w-2xl lg:max-w-4xl">
           {videos.map((videoId, index) => (
             <div 
               key={index}
