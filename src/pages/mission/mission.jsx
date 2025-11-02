@@ -3,10 +3,21 @@ import Image from "next/image";
 
 export default function Home() {
   const videos = [
-    "CGyEd0aKWZE?si=O3s69_Vd5LjzD2Tj",
-    "BS46C2z5lVE?si=TFgIGA3HhPXOOJHm",
-    "CGyEd0aKWZE?si=O3s69_Vd5LjzD2Tj",
-    "BS46C2z5lVE?si=TFgIGA3HhPXOOJHm",
+   
+"CGyEd0aKWZE?si=O3s69_Vd5LjzD2Tj", 
+    "BS46C2z5lVE?si=TFgIGA3HhPXOOJHm",    
+     "6N2dLghOMro",     
+     "ZtLlfdyDySY?si=UbKso_sBtruvWFdc",   
+  "fvFuGq-1Z8M?si=BFj93uChLamF5w78",    
+   "3leVBrkTPuw",     
+   "y4-in1XbVEc",     
+   "7RUylQDHQMk",     
+   "A-NQaCzzk4o",     
+   "q0xc49VGrGc",    
+    "EIRLTsjrDQI"
+
+
+
   ];
 
   return (
